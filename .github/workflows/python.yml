@@ -1,0 +1,22 @@
+name: pyhon based
+
+run-name: pyhon based
+
+on: 
+ push
+jobs:
+  pyhon_based:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checkout
+       uses: actions/checkout@v2
+     - name: Setup Python
+       uses: actions/setup-python@v5.3.0
+       with:
+        python-version: "'3.13'"
+        cache: 'pip'
+     - run: python passpdf.py
+     - name: Upload a Build Artifact
+       uses: actions/upload-artifact@v4
+       with:
+        path: staging
